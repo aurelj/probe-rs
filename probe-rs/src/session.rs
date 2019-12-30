@@ -12,3 +12,5 @@ impl Session {
         Self { target, probe }
     }
 }
+
+unsafe impl Send for Session {}
