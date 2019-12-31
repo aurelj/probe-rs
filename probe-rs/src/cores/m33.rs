@@ -193,7 +193,12 @@ impl Core for M33 {
     ) -> Result<(), DebugProbeError> {
         unimplemented!()
     }
-    fn set_breakpoint(&self, _mi: &mut MasterProbe, _addr: u32) -> Result<(), DebugProbeError> {
+    fn set_breakpoint(
+        &self,
+        _mi: &mut MasterProbe,
+        _addr: u32,
+        _state: bool,
+    ) -> Result<(), DebugProbeError> {
         unimplemented!()
     }
 

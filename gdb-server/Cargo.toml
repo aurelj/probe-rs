@@ -14,3 +14,4 @@ serde = "1.0.1"
 pretty_env_logger = "0.3.0"
 structopt = "*"
 async-std = { version = "1.4.0", features = ["unstable"] }
+futures = "*"

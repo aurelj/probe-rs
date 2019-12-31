@@ -454,12 +454,17 @@ impl Core for M0 {
         Ok(())
     }
 
-    fn set_breakpoint(&self, mi: &mut MasterProbe, addr: u32) -> Result<(), DebugProbeError> {
+    fn set_breakpoint(
+        &self,
+        mi: &mut MasterProbe,
+        addr: u32,
+        state: bool,
+    ) -> Result<(), DebugProbeError> {
         debug!("Setting breakpoint on address 0x{:08x}", addr);
         let mut value = BpCompx(0);
         value.set_bp_match(0b11);
         value.set_comp((addr >> 2) & 0x00FF_FFFF);
-        value.set_enable(true);
+        value.set_enable(state);
 
         mi.write32(BpCompx::ADDRESS, value.into())?;
 
@@ -559,7 +564,12 @@ impl Core for FakeM0 {
         unimplemented!()
     }
 
-    fn set_breakpoint(&self, _mi: &mut MasterProbe, _addr: u32) -> Result<(), DebugProbeError> {
+    fn set_breakpoint(
+        &self,
+        _mi: &mut MasterProbe,
+        _addr: u32,
+        _state: bool,
+    ) -> Result<(), DebugProbeError> {
         unimplemented!()
     }
 

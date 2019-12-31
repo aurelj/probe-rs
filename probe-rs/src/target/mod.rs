@@ -104,7 +104,12 @@ pub trait Core: std::fmt::Debug + dyn_clone::DynClone {
 
     fn enable_breakpoints(&self, mi: &mut MasterProbe, state: bool) -> Result<(), DebugProbeError>;
 
-    fn set_breakpoint(&self, mi: &mut MasterProbe, addr: u32) -> Result<(), DebugProbeError>;
+    fn set_breakpoint(
+        &self,
+        mi: &mut MasterProbe,
+        addr: u32,
+        state: bool,
+    ) -> Result<(), DebugProbeError>;
 
     fn read_block8(
         &self,

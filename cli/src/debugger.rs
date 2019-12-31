@@ -125,11 +125,11 @@ impl DebugCli {
                     .target
                     .core
                     .enable_breakpoints(&mut cli_data.session.probe, true)?;
-                cli_data
-                    .session
-                    .target
-                    .core
-                    .set_breakpoint(&mut cli_data.session.probe, address)?;
+                cli_data.session.target.core.set_breakpoint(
+                    &mut cli_data.session.probe,
+                    address,
+                    true,
+                )?;
 
                 Ok(CliState::Continue)
             },
